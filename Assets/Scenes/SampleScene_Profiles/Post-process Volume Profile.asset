@@ -59,13 +59,13 @@ MonoBehaviour:
     value: 0
   colorFilter:
     overrideState: 1
-    value: {r: 0.47058824, g: 0.627451, b: 0.627451, a: 1}
+    value: {r: 0.12156863, g: 0.37254903, b: 0.7490196, a: 1}
   hueShift:
     overrideState: 0
     value: 0
   saturation:
     overrideState: 1
-    value: -40
+    value: -80
   brightness:
     overrideState: 0
     value: 0
@@ -1332,10 +1332,10 @@ MonoBehaviour:
     value: 0
   intensity:
     overrideState: 1
-    value: 1
+    value: 0.5
   size:
     overrideState: 1
-    value: 1.5
+    value: 3
   lumContrib:
     overrideState: 0
     value: 0.8
@@ -1363,8 +1363,8 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   fastMode:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

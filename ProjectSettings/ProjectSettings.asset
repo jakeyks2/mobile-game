@@ -162,6 +162,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.DefaultCompany.NewUnityProject2
+    Standalone: com.DefaultCompany.New-Unity-Project--2-
   buildNumber:
     Standalone: 0
     VisionOS: 0
