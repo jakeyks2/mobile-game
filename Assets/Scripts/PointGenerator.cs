@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-public class WallDetector : MonoBehaviour
+public class PointGenerator : MonoBehaviour
 {
     ARRaycastManager raycastManager;
     XROrigin xrOrigin;
@@ -26,11 +26,7 @@ public class WallDetector : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            point = GetRandomPointInRoom(xrCamera.transform.position);
-            Debug.Log(point);
-        }
+        
     }
 
     void OnDrawGizmos()
@@ -38,7 +34,7 @@ public class WallDetector : MonoBehaviour
         Gizmos.DrawCube(point, new(0.1f, 0.1f, 0.1f));
     }
 
-    public Vector3 GetRandomPointInRoom(Vector3 origin)
+    public Vector3 GetRandomPointInRoom(Vector3 origin, float minDistance)
     {
         List<Vector3> directions = new();
         for (float angle = 0.0f; angle < 360.0f; angle += 1.0f)
@@ -48,7 +44,13 @@ public class WallDetector : MonoBehaviour
         foreach (Vector3 direction in directions)
         {
             float maxDistance = GetDistanceToNearestPlane(origin, direction);
-            if (Mathf.Approximately(maxDistance, 0.0f)) continue;
+            if (maxDistance < minDistance) continue;
+            float randomDistance = Random.Range(minDistance, maxDistance);
+            return origin + direction * randomDistance;
+        }
+        foreach (Vector3 direction in directions)
+        {
+            float maxDistance = GetDistanceToNearestPlane(origin, direction);
             float randomDistance = Random.Range(0.0f, maxDistance);
             return origin + direction * randomDistance;
         }
