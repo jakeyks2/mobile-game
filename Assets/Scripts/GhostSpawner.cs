@@ -10,6 +10,8 @@ public class GhostSpawner : MonoBehaviour
     public Camera xrCamera;
     public GameObject ghost;
 
+    float ghostTimer = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +21,10 @@ public class GhostSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        ghostTimer += Time.deltaTime;
+        if (ghostTimer >= 15.0f)
         {
+            ghostTimer = 0.0f;
             if (ghost != null) Destroy(ghost);
             ghost = Instantiate(ghostPrefab, pointGenerator.GetRandomPointInRoom(xrCamera.transform.position, 3.0f), Quaternion.identity);
         }

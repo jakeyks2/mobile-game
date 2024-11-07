@@ -34,6 +34,5 @@ public class GhostSensors : MonoBehaviour
             float ghostTempReduction = Mathf.Clamp(10.0f * ghostDistance - 30.0f, -20.0f, 0.0f);
             temperature += ghostTempReduction;
         }
-        Debug.Log(temperature);
     }
 }

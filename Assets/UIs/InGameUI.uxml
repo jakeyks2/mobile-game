@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIs/InGameUI.uss?fileID=7433441132597879392&amp;guid=0d0061a739110b64dbab10231734c0e2&amp;type=3#InGameUI" />
+    <ui:VisualElement name="progress-bar-container">
+        <ui:VisualElement name="progress-bar" />
+    </ui:VisualElement>
+</ui:UXML>
