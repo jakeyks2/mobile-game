@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIs/MainMenu.uss?fileID=7433441132597879392&amp;guid=937d7d34a82498d4ca02f7a19dd0a6fc&amp;type=3#MainMenu" />
+    <ui:VisualElement name="background" style="flex-grow: 1;">
+        <ui:Label tabindex="-1" text="Options" parse-escape-sequences="true" display-tooltip-when-elided="true" name="title" />
+        <ui:VisualElement name="button_container" style="flex-grow: 1;">
+            <ui:Button text="Sound: On" parse-escape-sequences="true" display-tooltip-when-elided="true" name="sound_button" class="button" />
+            <ui:Button text="Vibrate: On" parse-escape-sequences="true" display-tooltip-when-elided="true" name="vibrate_button" class="button" />
+            <ui:Button text="Back" parse-escape-sequences="true" display-tooltip-when-elided="true" name="back_button" class="button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

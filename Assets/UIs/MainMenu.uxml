@@ -3,7 +3,7 @@
     <ui:VisualElement name="background" style="flex-grow: 1;">
         <ui:VisualElement name="button_container">
             <ui:Button text="Play" parse-escape-sequences="true" display-tooltip-when-elided="true" name="play_button" class="button" />
-            <ui:Button text="Options" parse-escape-sequences="true" display-tooltip-when-elided="true" name="options_botton" class="button" />
+            <ui:Button text="Options" parse-escape-sequences="true" display-tooltip-when-elided="true" name="options_button" class="button" />
             <ui:Button text="Shop" parse-escape-sequences="true" display-tooltip-when-elided="true" name="shop_button" class="button" />
         </ui:VisualElement>
         <ui:Label tabindex="-1" text="Phantom Lens" parse-escape-sequences="true" display-tooltip-when-elided="true" name="title" />

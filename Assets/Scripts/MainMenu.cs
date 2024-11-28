@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,9 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField]
     string sceneToLoad;
+
+    [SerializeField]
+    OptionsMenu optionsMenu;
 
     [SerializeField]
     BannerPosition _bannerPosition = BannerPosition.BOTTOM_CENTER;
@@ -37,6 +41,7 @@ public class MainMenu : MonoBehaviour
         shopButton = root.Q<Button>("shop_button");
 
         playButton.clicked += Play;
+        optionsButton.clicked += Options;
 
 #if UNITY_IOS
         _adUnitId = _iOSAdUnitId;
@@ -51,6 +56,17 @@ public class MainMenu : MonoBehaviour
     {
         HideBanner();
         SceneManager.LoadScene(sceneToLoad);
+    }
+
+    void Options()
+    {
+        optionsMenu.Enable();
+        root.style.display = DisplayStyle.None;
+    }
+
+    public void Enable()
+    {
+        root.style.display = DisplayStyle.Flex;
     }
 
     public void LoadBanner()
