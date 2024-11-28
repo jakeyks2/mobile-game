@@ -1,6 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UIs/InGameUI.uss?fileID=7433441132597879392&amp;guid=0d0061a739110b64dbab10231734c0e2&amp;type=3#InGameUI" />
+    <ui:VisualElement name="flash" style="flex-grow: 1; background-color: rgba(255, 255, 255, 0);" />
     <ui:VisualElement name="progress-bar-container">
         <ui:VisualElement name="progress-bar" />
     </ui:VisualElement>
+    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="torch-button" style="left: 35%; top: 75%; position: absolute; width: 30%; height: 15%; background-image: url(&quot;project://database/Assets/Textures/torch_button.png?fileID=2800000&amp;guid=c2416975c17b0a94488e0c3f205b9991&amp;type=3#torch_button&quot;); background-color: rgba(0, 0, 0, 0); -unity-background-image-tint-color: rgb(255, 255, 255); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
 </ui:UXML>

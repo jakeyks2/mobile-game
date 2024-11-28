@@ -11,8 +11,14 @@ public class InGameUI : MonoBehaviour
     VisualElement root;
     VisualElement progressBarContainer;
     VisualElement progressBar;
+    Button torchButton;
+    VisualElement flash;
 
     bool uiLoaded = false;
+
+    float flashTimer = 0.0f;
+    float maxFlashTimer = 0.05f;
+    bool isFlashActive = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +27,11 @@ public class InGameUI : MonoBehaviour
         root = document.rootVisualElement;
         progressBarContainer = root.Q("progress-bar-container");
         progressBar = root.Q("progress-bar");
+        torchButton = root.Q<Button>("torch-button");
+        flash = root.Q("flash");
         root.RegisterCallback<GeometryChangedEvent>(OnGeometryChanged);
+
+        torchButton.clicked += Torch;
     }
 
     // Update is called once per frame
@@ -35,6 +45,17 @@ public class InGameUI : MonoBehaviour
             float temperatureRatio = sensors.temperature / sensors.baseTemperature;
             progressBar.style.backgroundColor = new(Color.HSVToRGB(2.0f / 3.0f - temperatureRatio * 2.0f / 3.0f, 1.0f, 1.0f));
         }
+
+        if (isFlashActive)
+        {
+            flashTimer += Time.deltaTime;
+            if (flashTimer >= maxFlashTimer)
+            {
+                flashTimer = 0.0f;
+                flash.style.backgroundColor = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+                isFlashActive = false;
+            }
+        }
     }
 
     void OnGeometryChanged(GeometryChangedEvent evt)
@@ -43,5 +64,12 @@ public class InGameUI : MonoBehaviour
         float width = root.resolvedStyle.width;
         progressBarContainer.style.top = width * 0.05f;
         progressBarContainer.style.left = width * 0.05f;
+        torchButton.style.height = width * 0.3f;
+    }
+
+    void Torch()
+    {
+        flash.style.backgroundColor = new Color(1.0f, 1.0f, 0.8f, 0.2f);
+        isFlashActive = true;
     }
 }
