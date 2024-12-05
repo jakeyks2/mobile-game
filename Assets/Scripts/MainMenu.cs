@@ -6,7 +6,7 @@ using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-[RequireComponent(typeof(UIDocument))]
+[RequireComponent(typeof(UIDocument), typeof(InterstitialLoader))]
 public class MainMenu : MonoBehaviour
 {
     UIDocument ui;
@@ -14,6 +14,8 @@ public class MainMenu : MonoBehaviour
     Button playButton;
     Button optionsButton;
     Button shopButton;
+
+    InterstitialLoader interstitialLoader;
 
     [SerializeField]
     string sceneToLoad;
@@ -42,6 +44,10 @@ public class MainMenu : MonoBehaviour
 
         playButton.clicked += Play;
         optionsButton.clicked += Options;
+        shopButton.clicked += Shop;
+
+        interstitialLoader = GetComponent<InterstitialLoader>();
+        interstitialLoader.adLoaded += InterstitialLoaded;
 
 #if UNITY_IOS
         _adUnitId = _iOSAdUnitId;
@@ -62,6 +68,16 @@ public class MainMenu : MonoBehaviour
     {
         optionsMenu.Enable();
         root.style.display = DisplayStyle.None;
+    }
+
+    void Shop()
+    {
+        interstitialLoader.LoadAd();
+    }
+
+    void InterstitialLoaded()
+    {
+        interstitialLoader.ShowAd();
     }
 
     public void Enable()

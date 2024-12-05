@@ -8,6 +8,7 @@ public class Billboard : MonoBehaviour
 
     void Update()
     {
-        transform.rotation = Quaternion.Euler(0.0f, Quaternion.LookRotation(transform.position - playerCamera.transform.position).eulerAngles.y, 0.0f);
+        if ((transform.position - playerCamera.transform.position).sqrMagnitude > Mathf.Epsilon)
+            transform.rotation = Quaternion.Euler(0.0f, Quaternion.LookRotation(transform.position - playerCamera.transform.position).eulerAngles.y, 0.0f);
     }
 }

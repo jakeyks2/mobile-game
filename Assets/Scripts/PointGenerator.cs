@@ -43,28 +43,39 @@ public class PointGenerator : MonoBehaviour
         }
         foreach (Vector3 direction in directions)
         {
-            float maxDistance = GetDistanceToNearestPlane(origin, direction);
-            if (maxDistance < minDistance) continue;
-            float randomDistance = Random.Range(minDistance, maxDistance);
-            return origin + direction * randomDistance;
+            float maxDistance = 0.0f;
+            if (GetDistanceToNearestPlane(origin, direction, out maxDistance))
+            {
+                if (maxDistance < minDistance) continue;
+                float randomDistance = Random.Range(minDistance, maxDistance);
+                return origin + direction * randomDistance;
+            }
         }
         foreach (Vector3 direction in directions)
         {
-            float maxDistance = GetDistanceToNearestPlane(origin, direction);
-            float randomDistance = Random.Range(0.0f, maxDistance);
-            return origin + direction * randomDistance;
+            float maxDistance = 0.0f;
+            if (GetDistanceToNearestPlane(origin, direction, out maxDistance))
+            {
+                float randomDistance = Random.Range(0.0f, maxDistance);
+                return origin + direction * randomDistance;
+            }
         }
-        return new(0.0f, 0.0f, 0.0f);
+        return origin + directions[0] * minDistance;
     }
 
-    public float GetDistanceToNearestPlane(Vector3 origin, Vector3 direction)
+    public bool GetDistanceToNearestPlane(Vector3 origin, Vector3 direction, out float distance)
     {
         direction.Normalize();
         Ray ray = new(origin, direction);
         List<ARRaycastHit> hitResults = new();
         raycastManager.Raycast(ray, hitResults, TrackableType.PlaneEstimated);
-        if (hitResults.Count == 0) return 0.0f;
+        if (hitResults.Count == 0)
+        {
+            distance = 0.0f;
+            return false;
+        }
         ARRaycastHit hit = hitResults[0];
-        return hit.distance;
+        distance = hit.distance;
+        return true;
     }
 }

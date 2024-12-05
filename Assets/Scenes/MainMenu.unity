@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 1750228729}
   - component: {fileID: 1750228732}
   - component: {fileID: 1750228731}
+  - component: {fileID: 1750228733}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -327,7 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _androidGameId: 5734925
   _iOSGameId: 5734924
-  _testMode: 0
+  _testMode: 1
 --- !u!114 &1750228732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,6 +346,20 @@ MonoBehaviour:
   _bannerPosition: 4
   _androidAdUnitId: Banner_Android
   _iOSAdUnitId: Banner_iOS
+--- !u!114 &1750228733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750228728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a31d99665c1f74799b8b7398e9b14e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _androidAdUnitId: Interstitial_Android
+  _iOSAdUnitId: Interstitial_iOS
 --- !u!1 &2111318764
 GameObject:
   m_ObjectHideFlags: 0
