@@ -25,12 +25,12 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField]
     BannerPosition _bannerPosition = BannerPosition.BOTTOM_CENTER;
-
+#pragma warning disable CS0414
     [SerializeField]
     string _androidAdUnitId = "Banner_Android";
-
     [SerializeField]
     string _iOSAdUnitId = "Banner_iOS";
+#pragma warning restore CS0414
 
     private string _adUnitId;
 

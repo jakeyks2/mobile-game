@@ -11,8 +11,10 @@ public class InGameUI : MonoBehaviour
     VisualElement root;
     VisualElement progressBarContainer;
     VisualElement progressBar;
+    Label temperatureLabel;
     Button torchButton;
     VisualElement flash;
+    
 
     bool uiLoaded = false;
 
@@ -27,6 +29,7 @@ public class InGameUI : MonoBehaviour
         root = document.rootVisualElement;
         progressBarContainer = root.Q("progress-bar-container");
         progressBar = root.Q("progress-bar");
+        temperatureLabel = root.Q<Label>("temperature-label");
         torchButton = root.Q<Button>("torch-button");
         flash = root.Q("flash");
         root.RegisterCallback<GeometryChangedEvent>(OnGeometryChanged);
@@ -39,7 +42,7 @@ public class InGameUI : MonoBehaviour
     {
         if (uiLoaded)
         {
-            progressBar.style.height = progressBarContainer.resolvedStyle.height * sensors.temperature / 100.0f;
+            progressBar.style.height = progressBarContainer.resolvedStyle.height * (sensors.temperature + 20.0f) / 100.0f;
             progressBar.style.top = progressBarContainer.resolvedStyle.height * (100.0f - sensors.temperature) / 100.0f;
 
             float temperatureRatio = sensors.temperature / sensors.baseTemperature;
@@ -62,9 +65,13 @@ public class InGameUI : MonoBehaviour
     {
         uiLoaded = true;
         float width = root.resolvedStyle.width;
+        float height = root.resolvedStyle.height;
         progressBarContainer.style.top = width * 0.05f;
         progressBarContainer.style.left = width * 0.05f;
         torchButton.style.height = width * 0.3f;
+        Debug.Log(width * 0.05f);
+        Debug.Log(progressBarContainer.resolvedStyle.height);
+        Debug.Log(temperatureLabel.parent);
     }
 
     void Torch()

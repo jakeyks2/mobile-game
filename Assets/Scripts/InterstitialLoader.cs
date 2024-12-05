@@ -8,10 +8,12 @@ public class InterstitialLoader : MonoBehaviour, IUnityAdsLoadListener, IUnityAd
 {
     public event Action adLoaded;
 
+#pragma warning disable CS0414
     [SerializeField]
     string _androidAdUnitId = "Interstitial_Android";
     [SerializeField]
     string _iOSAdUnitId = "Interstitial_iOS";
+#pragma warning restore CS0414
 
     string _adUnitId;
 

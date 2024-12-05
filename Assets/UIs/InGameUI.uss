@@ -5,6 +5,16 @@
     background-color: #7F7F7F;
 }
 
+#temperature-label {
+    position: absolute;
+    font-size: 300%;
+    width: 10%;
+    height: 4%;
+    -unity-text-align: middle-center;
+    margin: 0;
+    padding: 0;
+}
+
 #progress-bar {
     background-color: #FF0000;
 }

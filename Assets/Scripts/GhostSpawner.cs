@@ -25,10 +25,13 @@ public class GhostSpawner : MonoBehaviour
         if (ghostTimer >= 15.0f)
         {
             ghostTimer = 0.0f;
-            if (ghost != null) Destroy(ghost);
-            ghost = Instantiate(ghostPrefab, pointGenerator.GetRandomPointInRoom(xrCamera.transform.position, 3.0f), Quaternion.identity);
-            //ghost.GetComponent<Renderer>().enabled = false;
-            ghost.GetComponent<Billboard>().playerCamera = xrCamera;
+            if (ghost == null)
+            {
+                ghost = Instantiate(ghostPrefab);
+                ghost.GetComponent<Billboard>().playerCamera = xrCamera;
+            }
+            ghost.transform.position = pointGenerator.GetRandomPointInRoom(xrCamera.transform.position, 3.0f);
+            ghost.GetComponent<Renderer>().enabled = false;
         }
     }
 }
