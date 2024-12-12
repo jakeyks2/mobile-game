@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
     Button optionsButton;
     Button shopButton;
 
+    AdsInitializer adsInitializer;
     InterstitialLoader interstitialLoader;
 
     [SerializeField]
@@ -49,13 +50,15 @@ public class MainMenu : MonoBehaviour
         interstitialLoader = GetComponent<InterstitialLoader>();
         interstitialLoader.adLoaded += InterstitialLoaded;
 
+        adsInitializer = GetComponent<AdsInitializer>();
+
 #if UNITY_IOS
         _adUnitId = _iOSAdUnitId;
 #elif UNITY_ANDROID
         _adUnitId = _androidAdUnitId;
 #endif
         Advertisement.Banner.SetPosition(_bannerPosition);
-        LoadBanner();
+        adsInitializer.adsInitialized += LoadBanner;
     }
 
     void Play()
