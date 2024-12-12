@@ -101,7 +101,7 @@ public class MainMenu : MonoBehaviour
 
     void OnBannerLoaded()
     {
-        ShowBanner();
+        if (SceneManager.GetActiveScene().name == "MainMenu") ShowBanner();
     }
 
     void OnBannerError(string message)
