@@ -111,6 +111,7 @@ public class InGameUI : MonoBehaviour
         temperatureLabel.style.left = width * 0.1f + progressBarContainer.resolvedStyle.width;
         temperatureLabel.style.top = width * 0.05f;
         temperatureLabel.style.fontSize = progressBarContainer.resolvedStyle.width;
+        temperatureLabel.style.unityTextOutlineWidth = progressBarContainer.resolvedStyle.width * 0.03f;
         emfContainer.style.width = width * 0.5f;
         emfContainer.style.height = width * 0.1f;
         emfContainer.style.top = progressBarContainer.resolvedStyle.height / 2.0f;
@@ -118,6 +119,7 @@ public class InGameUI : MonoBehaviour
         emfLabel.style.top = progressBarContainer.resolvedStyle.height / 2.0f + width * 0.15f;
         emfLabel.style.right = width * 0.05f;
         emfLabel.style.fontSize = progressBarContainer.resolvedStyle.width;
+        emfLabel.style.unityTextOutlineWidth = progressBarContainer.resolvedStyle.width * 0.03f;
     }
 
     void Torch()
