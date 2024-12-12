@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UIElements;
 
 public class InGameUI : MonoBehaviour
@@ -24,6 +25,10 @@ public class InGameUI : MonoBehaviour
     float maxFlashTimer = 0.2f;
     bool isFlashActive = false;
     bool didHitGhost = false;
+
+    [SerializeField]
+    PostProcessVolume postProcessVolume;
+    ColorGrading colorGrading;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +56,8 @@ public class InGameUI : MonoBehaviour
             emfContainer.Add(emfLevel);
             emfLevels.Add(emfLevel);
         }
+
+        postProcessVolume.profile.TryGetSettings(out colorGrading);
     }
 
     // Update is called once per frame
@@ -80,7 +87,7 @@ public class InGameUI : MonoBehaviour
             if (flashTimer >= maxFlashTimer)
             {
                 flashTimer = 0.0f;
-                flash.style.backgroundColor = Color.clear;
+                colorGrading.enabled.Override(true);
                 isFlashActive = false;
                 if (didHitGhost)
                 {
@@ -115,8 +122,8 @@ public class InGameUI : MonoBehaviour
 
     void Torch()
     {
-        flash.style.backgroundColor = new Color(1.0f, 1.0f, 0.8f, 0.2f);
         isFlashActive = true;
+        colorGrading.enabled.Override(false);
         if (sensors.ghostDistance <= 1.0f && sensors.emf >= 100.0f && sensors.ghostSpawner.ghost != null)
         {
             didHitGhost = true;
