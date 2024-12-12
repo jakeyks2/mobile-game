@@ -156,6 +156,7 @@ MonoBehaviour:
   pointGenerator: {fileID: 1571596775}
   xrCamera: {fileID: 928379407}
   ghost: {fileID: 0}
+  sceneToLoad: Scenes/MainMenu
 --- !u!4 &156679788
 Transform:
   m_ObjectHideFlags: 0
@@ -710,7 +711,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseTemperature: 20
   temperature: 20
+  baseEMF: 0.2
+  emf: 0.2
   ghostSpawner: {fileID: 156679787}
+  ghostDistance: 3.4028235e+38
+  ghostAngle: 3.4028235e+38
 --- !u!1 &1863689832
 GameObject:
   m_ObjectHideFlags: 0

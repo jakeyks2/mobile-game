@@ -8,8 +8,6 @@
 #temperature-label {
     position: absolute;
     font-size: 300%;
-    width: 10%;
-    height: 4%;
     -unity-text-align: middle-center;
     margin: 0;
     padding: 0;
@@ -17,4 +15,18 @@
 
 #progress-bar {
     background-color: #FF0000;
+}
+
+#emf-container {
+    position: absolute;
+    background-color: #7F7F7F;
+    flex-direction: row;
+}
+
+#flash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
