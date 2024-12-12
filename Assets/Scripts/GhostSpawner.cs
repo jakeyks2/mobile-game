@@ -18,19 +18,13 @@ public class GhostSpawner : MonoBehaviour
     float enrageTimer = 0.0f;
     int ghostHealth = 10;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         ghostTimer += Time.deltaTime;
         enrageTimer += Time.deltaTime;
         if (enrageTimer >= 300.0f)
         {
+            if (PlayerPrefs.GetInt("vibrate") == 1) Handheld.Vibrate();
             Debug.Log("loss");
             SceneManager.LoadScene(sceneToLoad);
         }

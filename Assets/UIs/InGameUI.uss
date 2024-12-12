@@ -13,6 +13,14 @@
     padding: 0;
 }
 
+#emf-label {
+    position: absolute;
+    font-size: 300%;
+    -unity-text-align: middle-center;
+    margin: 0;
+    padding: 0;
+}
+
 #progress-bar {
     background-color: #FF0000;
 }

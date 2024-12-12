@@ -16,6 +16,7 @@ public class InGameUI : MonoBehaviour
     VisualElement flash;
     VisualElement emfContainer;
     List<VisualElement> emfLevels = new();
+    Label emfLabel;
 
     bool uiLoaded = false;
 
@@ -39,6 +40,7 @@ public class InGameUI : MonoBehaviour
         torchButton.clicked += Torch;
 
         emfContainer = root.Q("emf-container");
+        emfLabel = root.Q<Label>("emf-label");
 
         for (int i = 0; i < 5; i++)
         {
@@ -62,12 +64,14 @@ public class InGameUI : MonoBehaviour
             float temperatureRatio = sensors.temperature / sensors.baseTemperature;
             progressBar.style.backgroundColor = Color.HSVToRGB(2.0f / 3.0f - temperatureRatio * 2.0f / 3.0f, 1.0f, 1.0f);
 
-            temperatureLabel.text = sensors.temperature.ToString("F0") + "°C";
+            temperatureLabel.text = $"{sensors.temperature:F0}°C";
 
             for (int i = 0; i < emfLevels.Count; i++)
             {
                 emfLevels[i].style.backgroundColor = sensors.emf >= i * 25.0f ? Color.HSVToRGB((float)i / 12.0f, 1.0f, 1.0f) : Color.clear;
             }
+
+            emfLabel.text = $"{sensors.emf:F1}µT";
         }
 
         if (isFlashActive)
@@ -104,6 +108,9 @@ public class InGameUI : MonoBehaviour
         emfContainer.style.height = width * 0.1f;
         emfContainer.style.top = progressBarContainer.resolvedStyle.height / 2.0f;
         emfContainer.style.right = width * 0.05f;
+        emfLabel.style.top = progressBarContainer.resolvedStyle.height / 2.0f + width * 0.15f;
+        emfLabel.style.right = width * 0.05f;
+        emfLabel.style.fontSize = progressBarContainer.resolvedStyle.width;
     }
 
     void Torch()
