@@ -29,3 +29,7 @@
 	margin-bottom: 5%;
 	font-size: 750%;
 }
+
+.button_small_text {
+	font-size: 500%;
+}

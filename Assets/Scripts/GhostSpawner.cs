@@ -24,7 +24,7 @@ public class GhostSpawner : MonoBehaviour
         enrageTimer += Time.deltaTime;
         if (enrageTimer >= 300.0f)
         {
-            if (PlayerPrefs.GetInt("vibrate") == 1) Handheld.Vibrate();
+            if (PlayerPrefs.GetInt("vibrate") == 1) Vibrator.Vibrate(1000);
             Debug.Log("loss");
             SceneManager.LoadScene(sceneToLoad);
         }
