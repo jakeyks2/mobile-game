@@ -3,8 +3,8 @@
     <ui:VisualElement name="background" style="flex-grow: 1;">
         <ui:Label tabindex="-1" text="Shop" parse-escape-sequences="true" display-tooltip-when-elided="true" name="title" />
         <ui:VisualElement name="button_container" style="flex-grow: 1;">
-            <ui:Button text="Remove Ads: $2.99" parse-escape-sequences="true" display-tooltip-when-elided="true" name="sound_button" class="button button_small_text" />
-            <ui:Button text="Restore Purchases" parse-escape-sequences="true" display-tooltip-when-elided="true" name="vibrate_button" class="button button_small_text" />
+            <ui:Button text="Remove Ads: $2.99" parse-escape-sequences="true" display-tooltip-when-elided="true" name="remove_ads_button" class="button button_small_text" />
+            <ui:Button text="Restore Purchases" parse-escape-sequences="true" display-tooltip-when-elided="true" name="restore_purchases_button" class="button button_small_text" />
             <ui:Button text="Back" parse-escape-sequences="true" display-tooltip-when-elided="true" name="back_button" class="button" />
         </ui:VisualElement>
     </ui:VisualElement>

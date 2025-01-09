@@ -19,7 +19,7 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
 
     void Awake()
     {
-        InitializeAds();
+        if (PlayerPrefs.GetInt("no_ads", 0) == 0) InitializeAds();
     }
 
     public void InitializeAds()

@@ -25,6 +25,9 @@ public class MainMenu : MonoBehaviour
     OptionsMenu optionsMenu;
 
     [SerializeField]
+    ShopMenu shopMenu;
+
+    [SerializeField]
     BannerPosition _bannerPosition = BannerPosition.BOTTOM_CENTER;
 #pragma warning disable CS0414
     [SerializeField]
@@ -47,18 +50,22 @@ public class MainMenu : MonoBehaviour
         optionsButton.clicked += Options;
         shopButton.clicked += Shop;
 
-        interstitialLoader = GetComponent<InterstitialLoader>();
-        interstitialLoader.adLoaded += InterstitialLoaded;
+        if (PlayerPrefs.GetInt("no_ads", 0) == 0)
+        {
 
-        adsInitializer = GetComponent<AdsInitializer>();
+            interstitialLoader = GetComponent<InterstitialLoader>();
+            interstitialLoader.adLoaded += InterstitialLoaded;
+
+            adsInitializer = GetComponent<AdsInitializer>();
 
 #if UNITY_IOS
-        _adUnitId = _iOSAdUnitId;
+            _adUnitId = _iOSAdUnitId;
 #elif UNITY_ANDROID
-        _adUnitId = _androidAdUnitId;
+            _adUnitId = _androidAdUnitId;
 #endif
-        Advertisement.Banner.SetPosition(_bannerPosition);
-        adsInitializer.adsInitialized += LoadBanner;
+            Advertisement.Banner.SetPosition(_bannerPosition);
+            adsInitializer.adsInitialized += LoadBanner;
+        }
     }
 
     void Play()
@@ -75,7 +82,8 @@ public class MainMenu : MonoBehaviour
 
     void Shop()
     {
-        interstitialLoader.LoadAd();
+        shopMenu.Enable();
+        root.style.display = DisplayStyle.None;
     }
 
     void InterstitialLoaded()
@@ -90,7 +98,7 @@ public class MainMenu : MonoBehaviour
 
     public void LoadBanner()
     {
-        BannerLoadOptions options = new BannerLoadOptions
+        BannerLoadOptions options = new()
         {
             loadCallback = OnBannerLoaded,
             errorCallback = OnBannerError
@@ -110,7 +118,7 @@ public class MainMenu : MonoBehaviour
         LoadBanner();
     }
 
-    void ShowBanner()
+    public void ShowBanner()
     {
         BannerOptions options = new BannerOptions
         {
@@ -122,7 +130,7 @@ public class MainMenu : MonoBehaviour
         Advertisement.Banner.Show(_adUnitId, options);
     }
 
-    void HideBanner()
+    public void HideBanner()
     {
         Advertisement.Banner.Hide();
     }
