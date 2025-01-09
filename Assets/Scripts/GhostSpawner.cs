@@ -43,6 +43,7 @@ public class GhostSpawner : MonoBehaviour
             ghost.GetComponent<Billboard>().playerCamera = xrCamera;
         }
         ghost.transform.position = pointGenerator.GetRandomPointInRoom(xrCamera.transform.position, 3.0f);
+        ghost.transform.position -= new Vector3(0.0f, 0.5f, 0.0f);
         ghost.GetComponent<Renderer>().enabled = false;
     }
 
