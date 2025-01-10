@@ -76,7 +76,7 @@
   </files>
   <settings>
     <setting name="androidAbis" value="arm64-v8a" />
-    <setting name="bundleId" value="com.DefaultCompany.PhantomLens" />
+    <setting name="bundleId" value="com.jakeyks.PhantomLens" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />
     <setting name="gradleTemplateEnabled" value="False" />
