@@ -65,6 +65,8 @@ public class MainMenu : MonoBehaviour
 #endif
             Advertisement.Banner.SetPosition(_bannerPosition);
             adsInitializer.adsInitialized += LoadBanner;
+
+            if (DataStore.hasPlayedGame) interstitialLoader.LoadAd();
         }
     }
 
@@ -120,7 +122,7 @@ public class MainMenu : MonoBehaviour
 
     public void ShowBanner()
     {
-        BannerOptions options = new BannerOptions
+        BannerOptions options = new()
         {
             clickCallback = OnBannerClicked,
             hideCallback = OnBannerHidden,

@@ -8,23 +8,11 @@ public class InterstitialLoader : MonoBehaviour, IUnityAdsLoadListener, IUnityAd
 {
     public event Action adLoaded;
 
-#pragma warning disable CS0414
-    [SerializeField]
-    string _androidAdUnitId = "Interstitial_Android";
-    [SerializeField]
-    string _iOSAdUnitId = "Interstitial_iOS";
-#pragma warning restore CS0414
-
-    string _adUnitId;
-
-    void Start()
-    {
 #if UNITY_IOS
-        _adUnitId = _iOSAdUnitId
+        string _adUnitId = "Interstitial_iOS"
 #elif UNITY_ANDROID
-        _adUnitId = _androidAdUnitId;
+        string _adUnitId = "Interstitial_Android";
 #endif
-    }
 
     public void LoadAd()
     {
